@@ -79,12 +79,7 @@ function Signup() {
       });
   };
   useEffect(() => {}, []);
-  var testID = sessionStorage.getItem("id");
-  if (testID > 0) {
-    navigate("/AddProduct");
-  } else {
-    navigate("/");
-  }
+
   const countrySelect = (event) => {
     console.log(event.target.value);
     setSelectedCountryId(event.target.value);
