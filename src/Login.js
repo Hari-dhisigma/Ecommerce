@@ -3,13 +3,14 @@ import "./Login.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+
 function Login() {
-  
   const [UserName, setUserName] = useState([]);
   const [password, setpassword] = useState([]);
+
   let navigate = useNavigate();
   const loginclick = () => {
-    sessionStorage.setItem("Username",UserName);
+    // sessionStorage.setItem("Username", UserName);
     var dt =
       '{   "username": "' +
       UserName +
@@ -23,7 +24,7 @@ function Login() {
         dt
       )
       .then(function (res) {
-        console.log(res.data);
+        sessionStorage.setItem("id", res.data[0].id);
         if (res.data.length > 0) {
           navigate("/Dashboard");
         } else {
@@ -34,7 +35,7 @@ function Login() {
         console.log(error);
       });
   };
-  useEffect(() => {}, []);
+
   return (
     <div class="bg">
       <div class="containerLogin">

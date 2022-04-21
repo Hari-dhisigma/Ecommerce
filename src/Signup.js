@@ -8,6 +8,8 @@ function Signup() {
   const [countryList, setCountryList] = useState([]);
   const [stateList, setstateList] = useState([]);
   const [stateId, setstateId] = useState();
+  const [Uname, setUname] = useState("");
+  const [Pass, setPass] = useState("");
   const [FirstName, setFirstName] = useState("");
   const [lastName, setlastName] = useState("");
   const [address, setaddress] = useState("");
@@ -35,7 +37,9 @@ function Signup() {
     console.log(stateId);
     var dt =
       '{ "refUserType": 1,"txtUsername": "' +
-      FirstName +
+      Uname +
+      '","txtPassword": "' +
+      Pass +
       '","txtFirstname": "' +
       FirstName +
       '", "txtLastname": "' +
@@ -75,7 +79,12 @@ function Signup() {
       });
   };
   useEffect(() => {}, []);
-
+  var testID = sessionStorage.getItem("id");
+  if (testID > 0) {
+    navigate("/AddProduct");
+  } else {
+    navigate("/");
+  }
   const countrySelect = (event) => {
     console.log(event.target.value);
     setSelectedCountryId(event.target.value);
@@ -119,6 +128,34 @@ function Signup() {
               );
             })}
           </select>
+        </div>
+        <div class="row g-3">
+          <div class="col">
+            <label for="Uname" class="form-label">
+              Username
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="Uname"
+              placeholder="Username"
+              value={Uname}
+              onChange={(e) => setUname(e.target.value)}
+            ></input>
+          </div>
+          <div class="col">
+            <label for="Password" class="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              class="form-control"
+              id="Pass"
+              placeholder="Password"
+              value={Pass}
+              onChange={(e) => setPass(e.target.value)}
+            ></input>
+          </div>
         </div>
         <div class="row g-3">
           <div class="col">

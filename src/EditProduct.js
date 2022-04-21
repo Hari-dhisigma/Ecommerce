@@ -48,6 +48,7 @@ function EditProduct({ parentToChild }) {
       .then(function (res) {
         console.log(res.data);
         if (res.data.length != 0) {
+          alert("Product name and price updated");
           navigate("/Product");
         } else {
           alert("Error");
@@ -57,72 +58,68 @@ function EditProduct({ parentToChild }) {
         console.log(error);
       });
   };
-  useEffect(() => {}, []);
 
   return (
     <div>
       <Dashboard />
 
-
-
-
-        <div className="App21">
-          <div class="containerEditPdt">
-            <form class="row g-3">
+      <div className="App21">
+        <div class="containerEditPdt">
+          <form class="row g-3">
             <h6>
-          id:{id} <br></br>
-          Product name: {Pdtname} <br></br>
-          Product Price: {Pdtprice} <br></br>
-          Produt category name: {CategoryName} <br></br>
-        </h6>
-              <h5>Edit</h5>
+              id:{id} <br></br>
+              Product name: {Pdtname} <br></br>
+              Product Price: {Pdtprice} <br></br>
+              Produt category name: {CategoryName} <br></br>
+            </h6>
+            <h5>Edit</h5>
 
-              <div class="col-md-12">
-                <label for="inputPdtname" class="form-label">
-                  Product name
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputPdtname"
-                  placeholder="Pdtname"
-                  value={Edtname}
-                  onChange={(e) => setEdtname(e.target.value)}
-                ></input>
-              </div>
+            <div class="col-md-12">
+              <label for="inputPdtname" class="form-label">
+                Product name
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputPdtname"
+                placeholder="Pdtname"
+                value={Edtname}
+                onChange={(e) => setEdtname(e.target.value)}
+              ></input>
+            </div>
 
-              <div class="col-md-12">
-                <label for="inputPdtprice" class="form-label">
-                  Pdtprice
-                </label>
-                <input
-                  type="txt"
-                  class="form-control"
-                  id="inputPdtprice"
-                  placeholder="Pdtprice"
-                  value={Edtprice}
-                  onChange={(e) => setEdtprice(e.target.value)}
-                ></input>
-              </div>
+            <div class="col-md-12">
+              <label for="inputPdtprice" class="form-label">
+                Price
+              </label>
+              <input
+                type="txt"
+                class="form-control"
+                id="inputPdtprice"
+                placeholder="Pdtprice"
+                value={Edtprice}
+                onChange={(e) => setEdtprice(e.target.value)}
+              ></input>
+            </div>
 
-              <div class="col-md-6">
-              <Link to="/Product"><button type="button" class="btn btn-warning">
+            <div class="col-md-6">
+              <Link to="/Product">
+                <button type="button" class="btn btn-warning">
                   Cancel
-                </button></Link>
-
-              </div>
-              <div class="col-md-6">
-                <button type="button" class="btn btn-success" onClick={update}>
-                  Save
                 </button>
-              </div>
+              </Link>
+            </div>
+            <div class="col-md-6">
+              <button type="button" class="btn btn-success" onClick={update}>
+                Save
+              </button>
+            </div>
 
-              <div class="col-md-6"></div>
-            </form>
-          </div>
+            <div class="col-md-6"></div>
+          </form>
         </div>
       </div>
-  
+    </div>
   );
 }
 

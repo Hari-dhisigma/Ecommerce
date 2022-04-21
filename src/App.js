@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Signup from "./Signup";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
@@ -14,6 +10,7 @@ import EditOrder from "./EditOrder";
 import EditProduct from "./EditProduct";
 import EditProfile from "./ProfileEdit";
 import AddProduct from "./AddProduct";
+
 class App extends Component {
   constructor() {
     super();
@@ -30,22 +27,6 @@ class App extends Component {
       <div>
         <Router>
           <div>
-            {/* <ul>
-            <li>
-                <Link to="/Signup">Signup</Link>
-              </li>
-              <li>
-                <Link to="/Login">Login</Link>
-              </li>
-              <li>
-                <Link to="/Dashboard">Dashboard</Link>
-              </li>
-              <li>
-                <Link to="/Product">Product</Link>
-              </li>              
-
-            </ul> */}
-
             <Routes>
               <Route path="/Signup" element={<Signup />} />
               <Route path="/" element={<Login />} />

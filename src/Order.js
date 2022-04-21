@@ -3,12 +3,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./Order.css";
 import Dashboard from "./Dashboard";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Order() {
   const [Order, setOrder] = useState([]);
-
+  let navigate = useNavigate();
   useEffect(() => {
+    var testID = sessionStorage.getItem("id");
+    if (testID > 0) {
+      navigate("/Order");
+    } else {
+      navigate("/");
+    }
     axios
       .get("https://o36x4c5wi3.execute-api.us-west-2.amazonaws.com/orderselect")
       .then((resp) => {
@@ -18,9 +24,9 @@ function Order() {
   }, []);
   return (
     <div>
-       <Dashboard /> 
+      <Dashboard />
       <div class="containerOrder">
-      <h4>Order List</h4>
+        <h4>Order List</h4>
       </div>
       <div className="AppOrder">
         <table>
@@ -34,7 +40,6 @@ function Order() {
             <th>Order amount</th>
             <th>Date Created On</th>
             <th>Date Updated On</th>
-           
           </tr>
           {Order.map((val, key) => {
             return (
@@ -49,14 +54,12 @@ function Order() {
                 <td>{val.txtOrderAmount}</td>
                 <td>{val.dtCreatedOn}</td>
                 <td>{val.dtUpdatedOn}</td>
-              
               </tr>
             );
           })}
         </table>
       </div>
     </div>
-   
   );
 }
 export default Order;

@@ -1,12 +1,12 @@
 .containerProduct {
   width: 100%;
-  height: 5vh;
+  height: 2vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.btnAddPdt{
+.btnAddPdt {
   float: right;
-  margin: 50px 100px 0 0px;
+  margin: 22px 100px 0 0px;
 }

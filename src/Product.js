@@ -3,12 +3,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./Product.css";
 import Dashboard from "./Dashboard";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Product() {
   const [Prod, setProduct] = useState([]);
-
+  let navigate = useNavigate();
   useEffect(() => {
+    var testID = sessionStorage.getItem("id");
+    if (testID > 0) {
+      navigate("/Product");
+    } else {
+      navigate("/");
+    }
     axios
       .get(
         "https://rro3tk8hue.execute-api.us-west-2.amazonaws.com/productfetch"
@@ -22,7 +28,13 @@ function Product() {
   return (
     <div>
       <Dashboard />
-      <div class="btnAddPdt"><Link to="/AddProduct"><button type="button" class="btn btn-success" >Add Product</button></Link></div>
+      <div class="btnAddPdt">
+        <Link to="/AddProduct">
+          <button type="button" class="btn btn-success">
+            Add Product
+          </button>
+        </Link>
+      </div>
       <div class="containerProduct"></div>
       <div className="AppProduct">
         <table>

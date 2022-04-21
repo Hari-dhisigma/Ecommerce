@@ -39,6 +39,7 @@ function EditProfile() {
       .then(function (res) {
         console.log(res.data);
         if (res.data.length != 0) {
+          alert("Profile updated");
           navigate("/Dashboard");
         } else {
           alert("Error");
@@ -48,12 +49,19 @@ function EditProfile() {
         console.log(error);
       });
   };
-  useEffect(() => {}, []);
+  useEffect(() => {
+    var testID = sessionStorage.getItem("id");
+    if (testID > 0) {
+      navigate("/ProfileEdit");
+    } else {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div>
       <Dashboard />
- 
+
       <div className="Profileedit">
         <div class="containerprofile">
           <form class="row g-3">
@@ -89,10 +97,10 @@ function EditProfile() {
                 onChange={(e) => setLastname(e.target.value)}
               ></input>
             </div>
-            <p>
+            <div class="displayStmt">
               Use your firstname and lastname as they appear in
               government-issued id
-            </p>
+            </div>
             <div class="col-md-6">
               <label for="inputUsername" class="form-label">
                 Username
@@ -133,7 +141,9 @@ function EditProfile() {
             </div>
             <div class="col-md-6">
               <Link to="/Dashboard">
-                <button>cancel</button>
+                <button type="button" class="btn btn-warning">
+                  Cancel
+                </button>
               </Link>
             </div>
             <div class="col-md-6">
